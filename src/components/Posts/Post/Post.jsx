@@ -20,6 +20,10 @@ import { useState } from "react";
 import useStyles from "./styles";
 import { deletePost, likePost } from "../../../actions/posts";
 
+const randomImage = `https://picsum.photos/200/300?random=${
+  Math.random() * 100
+}`;
+
 export default function Post({ post, setCurrentId }) {
   const classes = useStyles();
   const dispatch = useDispatch();
@@ -76,7 +80,7 @@ export default function Post({ post, setCurrentId }) {
         className={classes.media}
         image={
           post.selectedFile ||
-          `https://picsum.photos/200/300?random=${Math.random()*100}`
+          `https://picsum.photos/200/300?random=${Math.random() * 100}`
         }
         title={post.title}
         onClick={openPost}

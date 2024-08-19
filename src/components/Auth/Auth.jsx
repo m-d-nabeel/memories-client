@@ -11,7 +11,7 @@ import {
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LockOutlined } from "@material-ui/icons";
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { GoogleLogin } from "@react-oauth/google";
 
@@ -55,7 +55,7 @@ export default function Auth() {
   }
 
   function handleCallBackResponse(response) {
-    const { name, email, picture, sub, exp } = jwt_decode(response.credential);
+    const { name, email, picture, sub, exp } = jwtDecode(response.credential);
     const userObject = { name, email, picture, _id: sub, exp };
     const credential = response.credential;
     onSuccess({ userObject: userObject, credential: credential });

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 // project related to react-router-dom
 import { Provider } from "react-redux";
 import { applyMiddleware, compose, legacy_createStore } from "redux";
-import thunk from "redux-thunk";
+import { thunk } from "redux-thunk";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 
 import App from "./App";

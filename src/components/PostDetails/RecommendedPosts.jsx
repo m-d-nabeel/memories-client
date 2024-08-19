@@ -1,9 +1,13 @@
 import { Typography, Divider } from "@material-ui/core";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import useStyles from "./styles";
 import { getPostsBySearch } from "../../actions/posts";
+
+const randomImage = `https://picsum.photos/200/300?random=${
+  Math.random() * 100
+}`;
 
 export default function RecommendedPosts({ post }) {
   const navigate = useNavigate();
@@ -45,13 +49,7 @@ export default function RecommendedPosts({ post }) {
               <Typography gutterBottom variant="subtitle1">
                 Likes : {likes.length}
               </Typography>
-              <img
-                src={
-                  selectedFile ||
-                  `https://picsum.photos/200/300?random=${Math.random() * 100}`
-                }
-                width="200px"
-              />
+              <img src={selectedFile || randomImage} width="200px" />
             </div>
           )
         )}

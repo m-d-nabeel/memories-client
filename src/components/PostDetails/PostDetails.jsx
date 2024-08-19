@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   Paper,
   Typography,
@@ -11,6 +11,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import useStyles from "./styles";
 import { getPost, getPostsBySearch } from "../../actions/posts";
 import CommentSection from "./CommentSection";
+
+const randomImage = `https://picsum.photos/200/300?random=${
+  Math.random() * 100
+}`;
 
 export default function PostDetails() {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -97,10 +101,7 @@ export default function PostDetails() {
         <div className={classes.imageSection}>
           <img
             className={classes.media}
-            src={
-              post.selectedFile ||
-              `https://picsum.photos/700/500?random=${Math.random()*100}`
-            }
+            src={post.selectedFile || randomImage}
             alt={post.title}
           />
         </div>
@@ -134,7 +135,9 @@ export default function PostDetails() {
                   <img
                     src={
                       selectedFile ||
-                      `https://picsum.photos/200/300?random=${Math.random()*100}`
+                      `https://picsum.photos/200/300?random=${
+                        Math.random() * 100
+                      }`
                     }
                     width="200px"
                   />
